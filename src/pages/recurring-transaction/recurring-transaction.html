@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Set a Recurring {{transactionType}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Amount ($)</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+    
+    <ion-item class="note-item">
+      <ion-label floating>Label</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label floating>Recurrence</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Start Date</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MMMM DD YYYY"[(ngModel)]="startDate"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  
+  <button ion-button color="light" (click)="cancelTransactionPressed()">Cancel</button>
+  <button ion-button color="primary">Submit</button>
+</ion-content>

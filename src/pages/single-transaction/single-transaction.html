@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Make a {{transactionType}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Amount ($)</ion-label>
+      <ion-input type="number" [(ngModel)]="amount"></ion-input>
+    </ion-item>
+    
+    <ion-item class="note-item">
+      <ion-label floating>Note</ion-label>
+      <ion-input type="text" [(ngModel)]="note"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MMMM DD YYYY"[(ngModel)]="startDate"></ion-datetime>
+    </ion-item>
+  </ion-list>
+  
+  <button ion-button color="light" (click)="cancelTransactionPressed()">Cancel</button>
+  <button ion-button color="primary" (click)="submitTransaction()">Submit</button>
+</ion-content>

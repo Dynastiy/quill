@@ -1,0 +1,58 @@
+﻿<ion-header>
+
+    <ion-navbar>
+        <ion-title>Register</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list no-lines>
+
+        <form [formGroup]="registerForm">
+
+            <ion-item>
+                <ion-label floating class="validationLabel">Email</ion-label>
+                <ion-input formControlName="email" type="text" [(ngModel)]="userEmail" [class.invalid]="!registerForm.controls.email.valid &&
+                           (registerForm.controls.email.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="!registerForm.controls.email.valid && (registerForm.controls.email.dirty || submitAttempt)">
+                <p class="warning">Please enter a valid email address.</p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating class="validationLabel">Password</ion-label>
+                <ion-input formControlName="password" type="password" [(ngModel)]="userPassword" [class.invalid]="!registerForm.controls.password.valid &&
+                           (registerForm.controls.password.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="!registerForm.controls.password.valid && (registerForm.controls.password.dirty || submitAttempt)">
+                <p class="warning">Password is not in the correct format. It must be at least 6 digits long.</p><br />
+                <p class="warning">It must include both an upper and a lower case letter.</p><br />
+                <p class="warning">It must include at least 1 number and 1 non-number/non-letter special character.</p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating class="validationLabel">Confirm Password</ion-label>
+                <ion-input formControlName="confirmPassword" type="password" [(ngModel)]="userConfirmPassword" [class.invalid]="!registerForm.controls.password.valid &&
+                           (registerForm.controls.password.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+
+            <ion-item *ngIf="!registerForm.controls.confirmPassword.valid && (registerForm.controls.confirmPassword.dirty || submitAttempt)">
+                <p class="warning">Passwords do not match.</p>
+            </ion-item>
+
+            <button ion-button color="primary" (click)="registerUser()">Submit</button>
+
+        </form>
+
+        <ion-item>
+            <ion-list *ngFor="let error of errors" no-lines class="input-errors">
+                <ion-item>{{error}}</ion-item>
+            </ion-list>
+        </ion-item>
+
+    </ion-list>
+</ion-content>

@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Quibill</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="main-content">
+  <div class="remaining-budget-dollars center">
+    <span>$</span><span>{{remainingBudgetDollars}}</span>
+    <p>Remaining in budget</p>
+  </div>
+  <div class="center next-pay-date">
+    <h1 class="no-margin" *ngIf="hasNextPayDate()"><span>Next pay date: </span><span>{{nextPayDate}}</span></h1>
+  </div>
+  <ion-grid>
+
+    <ion-row class="main-buttons">
+      <ion-col width-50>
+        <button ion-button color="secondary" (click)="pressedTransaction(false, transactionType.Withdrawal)">
+          <ion-icon name="remove-circle"></ion-icon>Withdrawal</button>
+      </ion-col>
+      <ion-col width-50>
+        <button ion-button color="secondary" (click)="pressedTransaction(false, transactionType.Deposit)">
+          <ion-icon name="add-circle"></ion-icon>Deposit</button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="secondary-buttons">
+      <ion-col width-50 class="center">
+        <button ion-button color="secondary" (click)="pressedTransaction(true, transactionType.Withdrawal)">Recurring<br/>Withdrawal</button>
+      </ion-col>
+      <ion-col width-50 class="center">
+        <button ion-button color="secondary" (click)="pressedTransaction(true, transactionType.Deposit)">Recurring<br/>Deposit</button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="center">
+        <button ion-button color="primary" (click)="pressedViewTransactions()" class="button-view-transactions">View All Transactions</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+      <ion-title>Logged In As: {{currentUserName}}</ion-title>
+  </ion-toolbar>
+</ion-footer>
+

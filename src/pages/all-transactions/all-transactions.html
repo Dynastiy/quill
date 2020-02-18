@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{viewTransactionsTitle}}</ion-title>
+  </ion-navbar>
+        <ion-toolbar>
+            <ion-segment [(ngModel)]="icons" color="secondary">
+                <ion-segment-button>All</ion-segment-button>
+                <ion-segment-button>Withdrawals</ion-segment-button>
+                <ion-segment-button>Deposits</ion-segment-button>
+            </ion-segment>
+        </ion-toolbar>
+    </ion-header>
+
+<ion-content padding>
+  <!--Date Range Selection-->
+    <ion-label>Select Date Range:</ion-label>
+    <ion-row>
+        <ion-item>
+            <ion-label>From:</ion-label>
+            <ion-datetime displayFormat="MMM DD, YYYY" [(ngModel)]="fromDate"></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>To:</ion-label>
+            <ion-datetime displayFormat="MMM DD, YYYY" [(ngModel)]="toDate"></ion-datetime>
+        </ion-item>
+    </ion-row>
+    <br><br>
+
+    <!--Search Bar-->
+    <ion-searchbar> <!--(ionInput)="getItems($event)"--></ion-searchbar>
+
+    <!--Display Results-->
+    <table>
+        <tr>
+            <th><ion-label>Date</ion-label></th>
+            <th><ion-label>Amount</ion-label></th>
+            <th><ion-label>W/D</ion-label></th>
+        </tr>
+        <tr *ngFor="let transaction of transactionService.getAllTransactions()">
+            <td>{{transaction.date}}</td>
+            <td>{{transaction.amount}}</td>
+            <td>{{transaction.type}}</td>
+        </tr>
+    </table>
+  
+    
+    <br><br>
+    <button ion-button color="light" (click)="cancelTransactionPressed()">Cancel</button>
+    <button ion-button color="negative" (click)="clearTransactions()">Clear All</button>
+</ion-content>
+
+
